@@ -20,12 +20,22 @@ public class UserController {
         model.addAttribute("user", new User());
             return "create";
     }
+//    @PostMapping
+//    public String checkvalidation(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
+//        new User().validate(user,bindingResult);
+//        if(bindingResult.hasFieldErrors()){
+//            return "create";
+//        }
+//        return "result";
+//    }
     @PostMapping
-    public String checkvalidation(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
+    public ModelAndView checkvalidation(@Valid User user, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView("create");
         new User().validate(user,bindingResult);
         if(bindingResult.hasFieldErrors()){
-            return "create";
+            return modelAndView;
         }
-        return "result";
+        modelAndView = new ModelAndView("result");
+        return  modelAndView;
     }
 }
