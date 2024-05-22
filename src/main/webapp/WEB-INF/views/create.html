@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/user" th:object="${user}"
+      method="post">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Ngày tháng năm sinh</td>
+            <td><input type="date" th:field="*{dob}"/></td>
+            <td th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Số điện thoại</td>
+            <td><input type="text" th:field="*{phone}"/></td>
+            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</td>
+        </tr>
+        </tr>
+            <td>Địa chỉ</td>
+            <td><input type="text" th:field="*{address}"/></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Name Error</td>
+        </tr>
+    </table>
+    <button>submit</button>
+</form>
+</body>
+</html>
